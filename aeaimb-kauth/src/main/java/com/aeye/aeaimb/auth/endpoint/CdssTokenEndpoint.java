@@ -84,7 +84,7 @@ import java.util.stream.Collectors;
 
 /**
  * @author lengleng
- * @date 2019/2/1 删除token端点
+ * @date 2019/2/1 删除token端点  新增注释
  */
 @Slf4j
 @RestController
