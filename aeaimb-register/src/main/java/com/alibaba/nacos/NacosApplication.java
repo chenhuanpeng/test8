@@ -29,7 +29,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author nacos
  * <p>
- * nacos console 源码运行，方便开发 生产从官网下载zip最新版集群配置运行
+ * nacos console 源码运行，方便开发 生产从官网下载zip最新版集群配置运行 修改注释
  */
 @Slf4j
 @EnableScheduling
