@@ -1,0 +1,26 @@
+server:
+  port: 7773
+
+spring:
+  application:
+    name: @artifactId@
+  cloud:
+    nacos:
+      username: @nacos.username@
+      password: @nacos.password@
+      discovery:
+        namespace: @profiles.active@
+        server-addr: ${NACOS_HOST:aeaimb-register}:${NACOS_PORT:8848}
+      config:
+        namespace: @profiles.active@
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+  config:
+    import:
+      - nacos:application.yml
+      - nacos:${spring.application.name}.yml
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml,classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+

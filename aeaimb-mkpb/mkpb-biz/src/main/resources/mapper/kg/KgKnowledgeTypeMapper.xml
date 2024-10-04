@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aeye.aeaimb.mkpb.mapper.kg.KgKnowledgeTypeMapper">
+
+  <resultMap id="kgKnowledgeTypeMap" type="com.aeye.cdss.admin.api.entity.KgKnowledgeType">
+        <id property="typeCode" column="type_code"/>
+        <id property="typeName" column="type_name"/>
+  </resultMap>
+</mapper>

@@ -1,0 +1,11 @@
+com\aeye\aeaimb\common\file\local\LocalFileAutoConfiguration.class
+com\aeye\aeaimb\common\file\oss\OssAutoConfiguration.class
+com\aeye\aeaimb\common\file\FileAutoConfiguration.class
+com\aeye\aeaimb\common\file\core\FileTemplate.class
+com\aeye\aeaimb\common\file\local\LocalFileProperties.class
+META-INF\spring-configuration-metadata.json
+com\aeye\aeaimb\common\file\oss\OssProperties.class
+com\aeye\aeaimb\common\file\core\FileProperties.class
+com\aeye\aeaimb\common\file\local\LocalFileTemplate.class
+com\aeye\aeaimb\common\file\oss\http\OssEndpoint.class
+com\aeye\aeaimb\common\file\oss\service\OssTemplate.class

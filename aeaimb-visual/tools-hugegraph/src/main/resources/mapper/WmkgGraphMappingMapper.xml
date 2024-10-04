@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aeye.aeaimb.hugegraph.mapper.WmkgGraphMappingMapper">
+
+	<resultMap type="com.aeye.aeaimb.hugegraph.mapper.entity.WmkgGraphMapping" id="BaseGraphMappingMap">
+		<result property="id" column="id" jdbcType="VARCHAR"/>
+		<result property="graphCode" column="graph_code" jdbcType="VARCHAR"/>
+		<result property="graphName" column="graph_name" jdbcType="VARCHAR"/>
+		<result property="standCode" column="stand_code" jdbcType="VARCHAR"/>
+		<result property="standName" column="stand_name" jdbcType="VARCHAR"/>
+		<result property="mediDictType" column="medi_dict_type" jdbcType="VARCHAR"/>
+	</resultMap>
+
+
+</mapper>
+

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aeye.aeaimb.mkpb.mapper.cstn.CstnPathMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.aeye.aeaimb.mkpb.entity.cstn.CstnPath">
+        <id column="id" property="id" />
+        <result column="path_name" property="pathName" />
+        <result column="path_type" property="pathType" />
+        <result column="visit_type" property="visitType" />
+        <result column="path_status" property="pathStatus" />
+        <result column="create_by" property="createBy" />
+        <result column="update_by" property="updateBy" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="del_flag" property="delFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, path_name, path_type, visit_type, path_status, create_by, update_by, create_time, update_time, del_flag
+    </sql>
+
+	<select id="getPathList" resultType="com.aeye.aeaimb.mkpb.vo.cstn.PathVO">
+		SELECT
+		t.id,
+		t.path_name,
+		t.path_type,
+		t.visit_type,
+		t.path_status,
+		t.update_by,
+		t.update_time,
+		d.dept_code as department_id,
+		d.dept_name as department
+		FROM
+		cstn_path t
+		left join cstn_path_dept d
+		on t.id = d.path_id
+		WHERE
+		t.del_flag != '1'
+		<if test="id != null and id != ''">
+			and t.id = #{id}
+		</if>
+	</select>
+
+	<select id="getCstnPathPageList" resultType="com.aeye.aeaimb.mkpb.vo.cstn.CstnPathVO">
+		SELECT
+		t.id,
+		t.path_name,
+		t.path_type,
+		t.visit_type,
+		t.path_status,
+		t.update_by,
+		t.update_time
+		FROM
+		cstn_path t
+		where 1=1
+		<if test="o.pathName != null and o.pathName != ''">
+			and t.path_name like CONCAT('%',#{o.pathName},'%')
+		</if>
+		<if test="o.pathType != null and o.pathType != ''">
+			and t.path_type = #{o.pathType}
+		</if>
+		<if test="o.visitType != null and o.visitType != ''">
+			and t.visit_type = #{o.visitType}
+		</if>
+		<if test="o.pathStatus != null and o.pathStatus != ''">
+			and t.path_status = #{o.pathStatus}
+		</if>
+		<if test="o.departmentId != null and o.departmentId != ''">
+			and t.id in(select c.path_id  from cstn_path_dept c
+			where c.dept_code =  #{o.departmentId}
+			)
+		</if>
+		and t.del_flag != '1'
+		order by t.update_time desc
+	</select>
+
+</mapper>

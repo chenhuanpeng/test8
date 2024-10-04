@@ -1,0 +1,33 @@
+server:
+  port: 7029
+
+spring:
+  application:
+    name: @artifactId@
+  cloud:
+    nacos:
+      username: @nacos.username@
+      password: @nacos.password@
+      discovery:
+        namespace: @profiles.active@
+        server-addr: ${NACOS_HOST:aeaimb-register}:${NACOS_PORT:8848}
+      config:
+        namespace: @profiles.active@
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+  config:
+    import:
+      - nacos:application-mkpb.yml
+      - nacos:${spring.application.name}.yml
+  main:
+    allow-bean-definition-overriding: true
+mybatis:
+    auto-mapping-behavior: full
+    map-underscore-to-camel-case: true
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+paramlog:
+  enable: true
+
+

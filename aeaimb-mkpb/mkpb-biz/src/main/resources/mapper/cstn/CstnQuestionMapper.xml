@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aeye.aeaimb.mkpb.mapper.cstn.CstnQuestionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.aeye.aeaimb.mkpb.entity.cstn.CstnQuestion">
+        <id column="id" property="id" />
+        <result column="qa_title" property="qaTitle" />
+        <result column="qa_tip" property="qaTip" />
+        <result column="qa_from" property="qaFrom" />
+        <result column="qa_sort" property="qaSort" />
+        <result column="qa_display_type" property="qaDisplayType" />
+        <result column="create_by" property="createBy" />
+        <result column="update_by" property="updateBy" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="del_flag" property="delFlag" />
+    </resultMap>
+
+	<select id="getCstnQuestionPageList" resultType="com.aeye.aeaimb.mkpb.vo.cstn.CstnQuestionVO">
+		SELECT
+		t.id,
+		p.purpose_name,
+		t.qa_title,
+		t.qa_tip,
+		t.qa_from,
+		t.qa_sort,
+		t.qa_display_type,
+		t.create_by,
+		t.update_by,
+		t.create_time,
+		t.update_time,
+		t.del_flag
+		FROM
+		cstn_question t
+		join cstn_question_purpose c on t.id = c.qa_id
+		join cstn_purpose p on p.id = c.purpose_id
+
+		<where>
+			1=1 and t.del_flag = 0
+			<if test="o.purposeId != null and o.purposeId != ''">
+				and p.id = #{o.purposeId}
+			</if>
+			<if test="o.qaTitle != null and o.qaTitle != ''">
+				and t.qa_title like  CONCAT('%',#{o.qaTitle},'%')
+			</if>
+		</where>
+		order by t.update_time desc
+	</select>
+
+	<select id="getQuestionByQaTitleAndPurposeId" resultType="com.aeye.aeaimb.mkpb.entity.cstn.CstnQuestion">
+		SELECT
+			t.id,
+			t.qa_title,
+			t.qa_tip,
+			t.qa_from,
+			t.qa_sort,
+			t.qa_display_type,
+			t.create_by,
+			t.update_by,
+			t.create_time,
+			t.update_time,
+			t.del_flag
+		FROM
+			cstn_question t
+				join cstn_question_purpose c on t.id = c.qa_id
+				join cstn_purpose p on p.id = c.purpose_id
+		<where>
+			1=1 and t.del_flag = 0
+			<if test="purposeId != null and purposeId != ''">
+				and p.id = #{purposeId}
+			</if>
+			<if test="qaTitle != null and qaTitle != ''">
+				and t.qa_title = #{qaTitle}
+			</if>
+		</where>
+	</select>
+
+</mapper>

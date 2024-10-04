@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aeye.aeaimb.mkpb.mapper.kg.KgKnowledgeMapper">
+
+  <resultMap id="kgKnowledgeMap" type="com.aeye.cdss.admin.api.entity.KgKnowledge">
+        <id property="id" column="id"/>
+        <id property="type" column="type"/>
+        <id property="name" column="name"/>
+        <id property="kgBaseId" column="kg_base_id"/>
+        <id property="kgBaseName" column="kg_base_name"/>
+        <id property="currentVersion" column="current_version"/>
+        <id property="publishDate" column="publish_date"/>
+        <id property="publishFlag" column="publish_flag"/>
+        <id property="normCode" column="norm_code"/>
+  </resultMap>
+	<select id="homePage" resultType="com.aeye.cdss.admin.api.dto.KnowledgeCount">
+		select `type` as name ,count(1) as count from kg_knowledge kk where kk.`type` not in ('T12','T13') group by kk.`type`
+	</select>
+	<select id="getDiseaseList" resultType="com.aeye.cdss.admin.api.dto.KnowledgeDiseaseDTO">
+		select id,`type` ,name,(select value  from kg_attributes ka where ka.kg_id = kk.id and ka.field_code ='T1-9-0128') as administrativeOffice ,kk.publish_date as updateTime
+		from kg_knowledge kk where `type`  = 'T1'
+		  <if test="kgKnowledge.name != null">
+			  and name like   concat('%',#{kgKnowledge.name},'%')
+		  </if>
+		<if test="kgKnowledge.administrativeOffice != null">
+			and exists (select value  from kg_attributes ka where ka.kg_id = kk.id and ka.field_code ='T1-9-0128' and value like concat('%',#{kgKnowledge.administrativeOffice},'%'))
+		</if>
+		order by publish_date desc
+	</select>
+	<select id="getUniversalPaging" resultType="com.aeye.cdss.admin.api.dto.KnowledgeDiseaseDTO">
+		select id,`type` ,name
+		<if test="lookup != null">
+			<foreach item="item" collection="lookup" separator="," open=","  index="">
+				(select value  from kg_attributes ka where ka.kg_id = kk.id and ka.field_code =#{item.key} LIMIT 1) as ${item.name}
+			</foreach>
+		</if>
+		       ,kk.publish_date as updateTime,kk.update_by
+		from kg_knowledge kk where `type`  = #{type}
+		<if test="name != null">
+			and name like   concat('%',#{name},'%')
+		</if>
+		 <if test="where != null">
+		   <foreach item="itema" collection="where"   index="">
+			   and exists (select value  from kg_attributes ka where ka.kg_id = kk.id and ka.field_code =#{itema.key} and value like concat('%',#{itema.val},'%'))
+		   </foreach>
+		</if>
+		order by publish_date desc  limit #{current},#{size}
+	</select>
+
+
+	<select id="countUniversalPaging" resultType="java.lang.Long">
+		SELECT COUNT(*) FROM kg_knowledge   WHERE `type` = #{type}
+		<if test="name != null">
+			and name like   concat('%',#{name},'%')
+		</if>
+	</select>
+
+
+
+	<select id="getsTheListOfNewItems" resultType="com.aeye.cdss.admin.api.vo.KgKnowledgeFieldVO">
+		SELECT kkf.*, GROUP_CONCAT(ka.value SEPARATOR ', ') AS val
+		FROM kg_knowledge_field kkf
+				 LEFT JOIN kg_attributes ka
+						   ON kkf.field_code = ka.field_code AND ka.kg_id = #{kgid}
+		WHERE kkf.type_code = #{type}
+		GROUP BY kkf.field_code
+		ORDER BY kkf.idx ASC;
+	</select>
+	<select id="getPreviewData" resultType="com.aeye.cdss.admin.api.vo.KgKnowledgeFieldVO">
+		SELECT kkf.*, GROUP_CONCAT(ka.value SEPARATOR ', ') AS val
+		FROM kg_knowledge_field kkf
+				 INNER JOIN kg_attributes ka
+						   ON kkf.field_code = ka.field_code AND ka.kg_id = #{kgid}
+		WHERE kkf.type_code = #{type} and field_can_preview = 0
+		GROUP BY kkf.field_code
+		ORDER BY kkf.idx ASC;
+	</select>
+</mapper>

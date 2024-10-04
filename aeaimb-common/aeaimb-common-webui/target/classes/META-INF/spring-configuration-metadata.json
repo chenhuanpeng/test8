@@ -1,0 +1,39 @@
+{
+  "groups": [
+    {
+      "name": "paramlog",
+      "type": "com.aeye.aeaimb.common.webui.paramlog.ParamLogProperties",
+      "sourceType": "com.aeye.aeaimb.common.webui.paramlog.ParamLogProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "paramlog.enable",
+      "type": "java.lang.Boolean",
+      "description": "是否启用日志打印",
+      "sourceType": "com.aeye.aeaimb.common.webui.paramlog.ParamLogProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "paramlog.enable-cost-time",
+      "type": "java.lang.Boolean",
+      "description": "是否打印接口耗时",
+      "sourceType": "com.aeye.aeaimb.common.webui.paramlog.ParamLogProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "paramlog.ignore-urls",
+      "type": "java.util.List<java.lang.String>",
+      "description": "不打印参数日志的接口, 同时也不会打印消耗时间",
+      "sourceType": "com.aeye.aeaimb.common.webui.paramlog.ParamLogProperties"
+    },
+    {
+      "name": "paramlog.single-log-max-length",
+      "type": "java.lang.Integer",
+      "description": "单条日志允许打印最大长度",
+      "sourceType": "com.aeye.aeaimb.common.webui.paramlog.ParamLogProperties",
+      "defaultValue": 1000
+    }
+  ],
+  "hints": []
+}

@@ -1,0 +1,16 @@
+{
+  "serverUrl": "http://192.168.16.133:9999",
+  "isStrict": false,
+  "allInOne": false,
+  "outPath": "/tmp",
+  "packageFilters": "com.aeye.aeaimb.mkpb.controller",
+  "appToken": "b84889c8aac44f109526ef5fa775f1ff",
+  "openUrl": "http://192.168.16.133:7700/api",
+  "debugEnvName":"知识中台后台",
+  "replace": true,
+  "debugEnvUrl":"http://192.168.16.133:9999/",
+  "coverOld": true,
+  "md5EncryptedHtmlName": false,
+  "projectName": "cdss",
+  "skipTransientField": true
+}

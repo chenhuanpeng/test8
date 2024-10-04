@@ -1,0 +1,6 @@
+com\aeye\aeaimb\common\job\properties\XxlExecutorProperties.class
+com\aeye\aeaimb\common\job\properties\XxlAdminProperties.class
+com\aeye\aeaimb\common\job\properties\XxlJobProperties.class
+META-INF\spring-configuration-metadata.json
+com\aeye\aeaimb\common\job\XxlJobAutoConfiguration.class
+com\aeye\aeaimb\common\job\annotation\EnableCdssXxlJob.class

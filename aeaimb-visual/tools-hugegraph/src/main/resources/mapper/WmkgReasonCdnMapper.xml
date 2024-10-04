@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aeye.aeaimb.hugegraph.mapper.WmkgReasonCdnMapper">
+
+	<resultMap type="com.aeye.aeaimb.hugegraph.mapper.entity.WmkgReasonCdn" id="WmkgReasonCdnMap">
+		<result property="cdnId" column="cdn_id" jdbcType="VARCHAR"/>
+		<result property="factorType" column="factor_type" jdbcType="VARCHAR"/>
+		<result property="factorWeight" column="factor_weight" jdbcType="VARCHAR"/>
+		<result property="factorSort" column="factor_sort" jdbcType="INTEGER"/>
+		<result property="factorNeg" column="factor_neg" jdbcType="VARCHAR"/>
+		<result property="factorMust" column="factor_must" jdbcType="VARCHAR"/>
+		<result property="factorDefine" column="factor_define" jdbcType="VARCHAR"/>
+		<result property="factorDataType" column="factor_data_type" jdbcType="VARCHAR"/>
+		<result property="factorUnit" column="factor_unit" jdbcType="VARCHAR"/>
+		<result property="groupId" column="group_id" jdbcType="VARCHAR"/>
+		<result property="reasonId" column="reason_id" jdbcType="VARCHAR"/>
+	</resultMap>
+
+
+</mapper>
+

@@ -1,0 +1,105 @@
+version: '3'
+services:
+  aeaimb-mysql:
+    build:
+      context: docs/dbinit
+    environment:
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_PASSWORD: root
+    restart: always
+    container_name: aeaimb-mysql
+    image: aeaimb-mysql
+    ports:
+      - 3306:3306
+    networks:
+      - spring_cloud_default
+
+  cdss-redis:
+    image: redis:7.0.0
+    ports:
+      - 6379:6379
+    restart: always
+    container_name: cdss-redis
+    hostname: cdss-redis
+    networks:
+      - spring_cloud_default
+
+  aeaimb-register:
+    build:
+      context: ./aeaimb-register
+    restart: always
+    ports:
+      - 8848:8848
+    container_name: aeaimb-register
+    hostname: aeaimb-register
+    image: aeaimb-register
+    networks:
+      - spring_cloud_default
+
+  aeaimb-gateway:
+    build:
+      context: ./aeaimb-gateway
+    restart: always
+    ports:
+      - 9999:9999
+    container_name: aeaimb-gateway
+    hostname: aeaimb-gateway
+    image: aeaimb-gateway
+    networks:
+      - spring_cloud_default
+
+  aeaimb-auth:
+    build:
+      context: ./aeaimb-auth
+    restart: always
+    container_name: aeaimb-auth
+    hostname: aeaimb-auth
+    image: aeaimb-auth
+    networks:
+      - spring_cloud_default
+
+  cdss-upms:
+    build:
+      context: ./cdss-upms/cdss-upms-biz
+    restart: always
+    container_name: cdss-upms
+    hostname: cdss-upms
+    image: cdss-upms
+    networks:
+      - spring_cloud_default
+
+  cdss-monitor:
+    build:
+      context: ./cdss-visual/cdss-monitor
+    restart: always
+    ports:
+      - 5001:5001
+    container_name: cdss-monitor
+    hostname: cdss-monitor
+    image: cdss-monitor
+    networks:
+      - spring_cloud_default
+
+  visual-codegen:
+    build:
+      context: ./aeaimb-visual/visual-codegen
+    restart: always
+    container_name: visual-codegen
+    hostname: visual-codegen
+    image: visual-codegen
+    networks:
+      - spring_cloud_default
+
+  visual-quartz:
+    build:
+      context: ./aeaimb-visual/visual-quartz
+    restart: always
+    image: visual-quartz
+    container_name: visual-quartz
+    networks:
+      - spring_cloud_default
+
+networks:
+  spring_cloud_default:
+    name:  spring_cloud_default
+    driver: bridge

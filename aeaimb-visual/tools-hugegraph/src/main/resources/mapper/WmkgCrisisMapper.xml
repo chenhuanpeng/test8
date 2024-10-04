@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aeye.aeaimb.hugegraph.mapper.WmkgCrisisMapper">
+
+    <resultMap type="com.aeye.aeaimb.hugegraph.mapper.entity.WmkgCrisis" id="WmkgCrisisMap">
+        <result property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="projectName" column="project_name" jdbcType="VARCHAR"/>
+        <result property="projectType" column="project_type" jdbcType="VARCHAR"/>
+        <result property="indicatorName" column="indicator_name" jdbcType="VARCHAR"/>
+        <result property="indicatorValue" column="indicator_value" jdbcType="VARCHAR"/>
+        <result property="indicatorUnit" column="indicator_unit" jdbcType="VARCHAR"/>
+        <result property="suitAge" column="suit_age" jdbcType="VARCHAR"/>
+        <result property="suitDept" column="suit_dept" jdbcType="VARCHAR"/>
+        <result property="crisisDesc" column="crisis_desc" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+</mapper>
+

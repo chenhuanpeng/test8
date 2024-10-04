@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aeye.aeaimb.mkpb.mapper.wmkg.WmkgReasonDefineMapper">
+
+    <resultMap type="com.aeye.aeaimb.mkpb.entity.wmkg.WmkgReasonDefine" id="WmkgReasonDefineMap">
+        <result property="reasonId" column="reason_id" jdbcType="VARCHAR"/>
+        <result property="reasonName" column="reason_name" jdbcType="VARCHAR"/>
+        <result property="diseaseName" column="disease_name" jdbcType="VARCHAR"/>
+        <result property="diseaseCode" column="disease_code" jdbcType="VARCHAR"/>
+        <result property="diseaseSort" column="disease_sort" jdbcType="INTEGER"/>
+        <result property="reasonStatus" column="reason_status" jdbcType="INTEGER"/>
+        <result property="imptRatio" column="impt_ratio" jdbcType="VARCHAR"/>
+        <result property="genlRatio" column="genl_ratio" jdbcType="VARCHAR"/>
+        <result property="minoRatio" column="mino_ratio" jdbcType="VARCHAR"/>
+        <result property="negvRatio" column="negv_ratio" jdbcType="VARCHAR"/>
+        <result property="irreRatio" column="irre_ratio" jdbcType="VARCHAR"/>
+        <result property="scopeType" column="scope_type" jdbcType="VARCHAR"/>
+        <result property="scopeValue" column="scope_value" jdbcType="VARCHAR"/>
+        <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+        <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="delFlag" column="del_flag" jdbcType="VARCHAR"/>
+    </resultMap>
+
+<select id="getReasonDefineCountPageList" resultType="com.aeye.aeaimb.mkpb.vo.cdn.ReasonDefineCountVO">
+	SELECT
+	wrd2.disease_code,
+	wrd2.disease_name,
+	COUNT(wrd.reason_id) AS count
+	FROM
+	wmkg_reason_disease wrd2
+	LEFT JOIN
+	(
+	SELECT
+	reason_id,
+	disease_code,
+	disease_name
+	FROM
+	wmkg_reason_define
+	WHERE
+	del_flag != '1'
+	) AS wrd
+	ON
+	wrd2.disease_code = wrd.disease_code
+	<where>
+		<if test="o.diseaseName != null and o.diseaseName != ''">
+			and wrd2.disease_name like CONCAT('%',#{o.diseaseName},'%')
+		</if>
+		<if test="o.diseaseCode != null and o.diseaseCode != ''">
+			and wrd2.disease_code like CONCAT('%',#{o.diseaseCode},'%')
+		</if>
+	</where>
+	GROUP BY
+	wrd2.disease_code,
+	wrd2.disease_name
+</select>
+</mapper>
+

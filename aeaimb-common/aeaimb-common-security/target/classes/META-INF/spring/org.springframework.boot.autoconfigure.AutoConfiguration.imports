@@ -1,0 +1,8 @@
+com.aeye.aeaimb.common.security.service.CdssUserDetailsServiceImpl
+com.aeye.aeaimb.common.security.service.CdssAppUserDetailsServiceImpl
+com.aeye.aeaimb.common.security.service.CdssRedisOAuth2AuthorizationService
+com.aeye.aeaimb.common.security.service.CdssRedisOAuth2AuthorizationConsentService
+com.aeye.aeaimb.common.security.component.CdssSecurityInnerAspect
+com.aeye.aeaimb.common.security.component.CdssSecurityMessageSourceConfiguration
+com.aeye.aeaimb.common.security.service.CdssRemoteRegisteredClientRepository
+com.aeye.aeaimb.common.security.service.MkpbUserDetailsServiceImpl

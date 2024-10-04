@@ -1,0 +1,12 @@
+{
+  "project": {
+    "packageName": "com.aeye.cdss",
+    "version": "1.0.0",
+    "backendPath": "cdss",
+    "frontendPath": "cdss-ui"
+  },
+  "developer": {
+    "author": "cdss",
+    "email": "cdss4cloud@qq.com"
+  }
+}

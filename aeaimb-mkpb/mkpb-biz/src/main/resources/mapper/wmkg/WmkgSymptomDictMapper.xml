@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aeye.aeaimb.mkpb.mapper.wmkg.WmkgSymptomDictMapper">
+
+	<resultMap type="com.aeye.aeaimb.mkpb.entity.wmkg.WmkgSymptomDict" id="WmkgSymptomDictMap">
+		<result property="symptomCode" column="symptom_code" jdbcType="VARCHAR"/>
+		<result property="symptomName" column="symptom_name" jdbcType="VARCHAR"/>
+		<result property="symptomType" column="symptom_type" jdbcType="VARCHAR"/>
+		<result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+		<result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+		<result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+		<result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+		<result property="delFlag" column="del_flag" jdbcType="VARCHAR"/>
+	</resultMap>
+
+
+	<select id="getSymptomDictList" resultType="com.aeye.aeaimb.mkpb.vo.cstn.CommonVO">
+		SELECT
+		t.symptom_code as k,
+		t.symptom_name as v
+		FROM
+		wmkg_symptom_dict t
+		WHERE 1=1
+
+		<if test="keyword != null and keyword != ''">
+			and t.symptom_name like CONCAT('%',#{keyword},'%')
+		</if>
+	</select>
+
+</mapper>
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aeye.aeaimb.mkpb.mapper.wmkg.WmkgReasonCdnSymptomMapper">
+
+    <resultMap type="com.aeye.aeaimb.mkpb.entity.wmkg.WmkgReasonCdnSymptom" id="WmkgReasonCdnSymptomMap">
+        <result property="cdnId" column="cdn_id" jdbcType="VARCHAR"/>
+        <result property="symptomCode" column="symptom_code" jdbcType="VARCHAR"/>
+        <result property="symptomName" column="symptom_name" jdbcType="VARCHAR"/>
+        <result property="symptomMain" column="symptom_main" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+</mapper>
+

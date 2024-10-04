@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aeye.aeaimb.mkpb.mapper.cstn.CstnPurposeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.aeye.aeaimb.mkpb.entity.cstn.CstnPurpose">
+        <id column="id" property="id" />
+        <result column="purpose_name" property="purposeName" />
+        <result column="purpose_type" property="purposeType" />
+        <result column="purpose_desc" property="purposeDesc" />
+        <result column="parent_purpose" property="parentPurpose" />
+        <result column="meta_code" property="metaCode" />
+        <result column="create_by" property="createBy" />
+        <result column="update_by" property="updateBy" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="del_flag" property="delFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, purpose_name, purpose_type, purpose_desc, parent_purpose, meta_code, create_by, update_by, create_time, update_time, del_flag
+    </sql>
+
+	<select id="getCstnPurposePageList" resultType="com.aeye.aeaimb.mkpb.vo.cstn.CstnPurposeVO">
+		SELECT
+		t.id,
+		t.purpose_name,
+		t.purpose_type,
+		t.purpose_desc,
+		t.parent_purpose,
+		t.meta_code,
+		t.create_by,
+		t.update_by,
+		t.create_time,
+		t.update_time,
+		t.del_flag
+		FROM
+		cstn_purpose t
+		<where>
+			1=1 and t.del_flag = 0
+			<if test="o.purposeName != null and o.purposeName != ''">
+				and t.purpose_name like CONCAT('%',#{o.purposeName},'%')
+			</if>
+			<if test="o.purposeType != null and o.purposeType != ''">
+				and t.purpose_type = #{o.purposeType}
+			</if>
+		</where>
+		order by t.update_time desc
+	</select>
+
+	<select id="getPurposeList" resultType="com.aeye.aeaimb.mkpb.vo.cstn.PurposeVO">
+		select a.id ,
+		a.purpose_name,
+		a.purpose_type,
+		a.purpose_desc,
+		a.parent_purpose
+		from cstn_purpose a
+		<where>
+			1=1
+			and a.del_flag = '0';
+		</where>
+	</select>
+
+	<select id="getParentPurposeList" resultType="com.aeye.aeaimb.mkpb.vo.cstn.PurposeVO">
+		select a.id ,
+		a.purpose_name,
+		a.purpose_type,
+		a.purpose_desc,
+		a.parent_purpose
+		from cstn_purpose a
+		<where>
+			1=1
+			and a.del_flag = '0'
+			and a.purpose_type = '1'
+		</where>
+	</select>
+
+	<select id="getRelatePurposeList" resultType="com.aeye.aeaimb.mkpb.vo.cstn.PurposeVO">
+		select a.id ,
+		a.purpose_name,
+		a.purpose_type,
+		a.purpose_desc,
+		a.parent_purpose,
+		b.loop_flag as is_loop
+		from cstn_purpose a join cstn_path_purpose b
+		on a.id = b.purpose_id
+		<where>
+			1=1
+			and a.del_flag = '0'
+			and b.path_id = #{pathId}
+		</where>
+	</select>
+
+</mapper>

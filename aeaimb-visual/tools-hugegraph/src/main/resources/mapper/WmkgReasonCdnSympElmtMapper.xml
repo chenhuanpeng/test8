@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aeye.aeaimb.hugegraph.mapper.WmkgReasonCdnSympElmtMapper">
+
+	<resultMap type="com.aeye.aeaimb.hugegraph.mapper.entity.WmkgReasonCdnSympElmt" id="WmkgReasonCdnSympElmtMap">
+		<result property="cdnId" column="cdn_id" jdbcType="VARCHAR"/>
+		<result property="symptomCode" column="symptom_code" jdbcType="VARCHAR"/>
+		<result property="symptomName" column="symptom_name" jdbcType="VARCHAR"/>
+		<result property="factorType" column="factor_type" jdbcType="VARCHAR"/>
+		<result property="factorName" column="factor_name" jdbcType="VARCHAR"/>
+		<result property="factorValue" column="factor_value" jdbcType="VARCHAR"/>
+		<result property="factorSort" column="factor_sort" jdbcType="INTEGER"/>
+	</resultMap>
+
+
+</mapper>
+

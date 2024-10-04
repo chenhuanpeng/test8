@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aeye.aeaimb.hugegraph.mapper.WmkgDiseaseSystemMapper">
+
+	<resultMap type="com.aeye.aeaimb.hugegraph.mapper.entity.WmkgDiseaseSystem" id="WmkgDiseaseSystemMap">
+		<result property="id" column="id" jdbcType="VARCHAR"/>
+		<result property="diseaseCode" column="disease_code" jdbcType="VARCHAR"/>
+		<result property="diseaseSystem" column="disease_system" jdbcType="VARCHAR"/>
+		<result property="diseaseSort" column="disease_sort" jdbcType="INTEGER"/>
+	</resultMap>
+
+
+</mapper>
+

@@ -1,0 +1,10 @@
+com\aeye\aeaimb\common\datasource\DynamicDataSourceAutoConfiguration.class
+com\aeye\aeaimb\common\datasource\annotation\EnableDynamicDataSource.class
+com\aeye\aeaimb\common\datasource\config\ClearTtlDataSourceFilter.class
+com\aeye\aeaimb\common\datasource\config\JdbcDynamicDataSourceProvider.class
+com\aeye\aeaimb\common\datasource\enums\DsJdbcUrlEnum.class
+com\aeye\aeaimb\common\datasource\enums\DsConfTypeEnum.class
+com\aeye\aeaimb\common\datasource\config\DataSourceProperties.class
+com\aeye\aeaimb\common\datasource\config\LastParamDsProcessor.class
+META-INF\spring-configuration-metadata.json
+com\aeye\aeaimb\common\datasource\support\DataSourceConstants.class

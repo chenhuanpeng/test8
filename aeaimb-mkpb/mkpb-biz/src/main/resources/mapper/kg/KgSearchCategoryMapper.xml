@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aeye.aeaimb.mkpb.mapper.kg.KgSearchCategoryMapper">
+
+  <resultMap id="kgSearchCategoryMap" type="com.aeye.cdss.admin.api.entity.KgSearchCategory">
+        <id property="kgTypeCode" column="kg_type_code"/>
+        <id property="kgTypeName" column="kg_type_name"/>
+        <id property="kgStatus" column="kg_status"/>
+        <id property="kgIcon" column="kg_icon"/>
+        <id property="kgDisplayCateType" column="kg_display_cate_type"/>
+        <id property="kgDisplayContentType" column="kg_display_content_type"/>
+        <id property="sort" column="sort"/>
+	    <id property="clientMode" column="client_mode"/>
+
+  </resultMap>
+
+
+</mapper>

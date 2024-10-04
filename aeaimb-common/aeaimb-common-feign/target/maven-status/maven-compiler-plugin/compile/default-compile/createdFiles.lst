@@ -1,0 +1,17 @@
+com\aeye\aeaimb\common\feign\CdssFeignAutoConfiguration.class
+com\aeye\aeaimb\common\feign\sentinel\handle\CdssUrlBlockHandler.class
+com\aeye\aeaimb\common\feign\sentinel\handle\GlobalBizExceptionHandler.class
+com\aeye\aeaimb\common\feign\sentinel\SentinelAutoConfiguration.class
+com\aeye\aeaimb\common\feign\sentinel\parser\CdssHeaderRequestOriginParser.class
+com\aeye\aeaimb\common\feign\sentinel\ext\CdssSentinelFeign$Builder.class
+com\aeye\aeaimb\common\feign\annotation\Backoff.class
+com\aeye\aeaimb\common\feign\CdssFeignRetryAutoConfiguration.class
+com\aeye\aeaimb\common\feign\annotation\NoToken.class
+com\aeye\aeaimb\common\feign\core\CdssFeignInnerRequestInterceptor.class
+com\aeye\aeaimb\common\feign\annotation\EnableCdssFeignClients.class
+com\aeye\aeaimb\common\feign\retry\FeignRetryAspect.class
+org\springframework\cloud\openfeign\CdssFeignClientsRegistrar.class
+com\aeye\aeaimb\common\feign\sentinel\ext\CdssSentinelFeign$Builder$1.class
+com\aeye\aeaimb\common\feign\sentinel\ext\CdssSentinelInvocationHandler.class
+com\aeye\aeaimb\common\feign\annotation\FeignRetry.class
+com\aeye\aeaimb\common\feign\sentinel\ext\CdssSentinelFeign.class

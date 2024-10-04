@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aeye.aeaimb.mkpb.mapper.cstn.CstnDictMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.aeye.aeaimb.mkpb.entity.cstn.CstnDict">
+        <id column="dict_type" property="dictType" />
+        <id column="item_value" property="itemValue" />
+        <result column="item_label" property="itemLabel" />
+        <result column="sort_order" property="sortOrder" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        dict_type, item_value, item_label, sort_order
+    </sql>
+
+	<select id="getDictList" resultType="com.aeye.aeaimb.mkpb.entity.cstn.CstnDict">
+		SELECT
+		t.*
+		FROM
+		cstn_dict t
+		WHERE 1=1
+		<if test="dictType != null and dictType != ''">
+			and t.dict_type = #{dictType}
+		</if>
+	</select>
+
+</mapper>

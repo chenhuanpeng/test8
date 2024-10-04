@@ -1,0 +1,4 @@
+com.aeye.aeaimb.common.feign.CdssFeignAutoConfiguration
+com.aeye.aeaimb.common.feign.CdssFeignRetryAutoConfiguration
+com.aeye.aeaimb.common.feign.sentinel.SentinelAutoConfiguration
+com.aeye.aeaimb.common.feign.sentinel.handle.GlobalBizExceptionHandler

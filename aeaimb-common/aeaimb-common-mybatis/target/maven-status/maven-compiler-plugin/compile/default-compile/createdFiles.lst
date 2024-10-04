@@ -1,0 +1,8 @@
+com\aeye\aeaimb\common\mybatis\handler\JsonStringArrayTypeHandler.class
+com\aeye\aeaimb\common\mybatis\resolver\SqlFilterArgumentResolver.class
+com\aeye\aeaimb\common\mybatis\handler\JsonLongArrayTypeHandler.class
+com\aeye\aeaimb\common\mybatis\plugins\CdssPaginationInnerInterceptor.class
+com\aeye\aeaimb\common\mybatis\base\BaseEntity.class
+com\aeye\aeaimb\common\mybatis\config\MybatisPlusMetaObjectHandler.class
+com\aeye\aeaimb\common\mybatis\handler\MybatisExceptionHandler.class
+com\aeye\aeaimb\common\mybatis\MybatisAutoConfiguration.class

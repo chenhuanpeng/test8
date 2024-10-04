@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aeye.aeaimb.hugegraph.mapper.WmkgDictKgMappingMapper">
+
+	<resultMap type="com.aeye.aeaimb.hugegraph.mapper.entity.WmkgDictKgMapping" id="WmkgDictKgMappingMap">
+		<result property="id" column="id" jdbcType="VARCHAR"/>
+		<result property="mediDictCode" column="medi_dict_code" jdbcType="VARCHAR"/>
+		<result property="mediDictName" column="medi_dict_name" jdbcType="VARCHAR"/>
+		<result property="mediDictType" column="medi_dict_type" jdbcType="VARCHAR"/>
+		<result property="normType" column="norm_type" jdbcType="VARCHAR"/>
+		<result property="kgId" column="kg_id" jdbcType="VARCHAR"/>
+		<result property="kgType" column="kg_type" jdbcType="VARCHAR"/>
+		<result property="kgName" column="kg_name" jdbcType="VARCHAR"/>
+		<result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+		<result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+		<result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+		<result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+		<result property="delFlag" column="del_flag" jdbcType="VARCHAR"/>
+	</resultMap>
+
+
+</mapper>
+

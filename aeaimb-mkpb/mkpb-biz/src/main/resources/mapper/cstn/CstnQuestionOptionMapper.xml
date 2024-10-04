@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aeye.aeaimb.mkpb.mapper.cstn.CstnQuestionOptionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.aeye.aeaimb.mkpb.entity.cstn.CstnQuestionOption">
+        <id column="id" property="id" />
+        <result column="qa_id" property="qaId" />
+        <result column="option_name" property="optionName" />
+        <result column="option_sort" property="optionSort" />
+    </resultMap>
+
+	<select id="getQuestionOptionList" resultType="com.aeye.aeaimb.mkpb.entity.cstn.CstnQuestionOption">
+		SELECT
+		t.*
+		FROM
+		cstn_question_option t
+		WHERE 1=1
+		<if test="qaId != null and qaId != ''">
+			and t.qa_id = #{qaId}
+		</if>
+	</select>
+
+	<delete id="deleteQuestionOptionList" parameterType="java.lang.String">
+		DELETE FROM cstn_question_option
+		WHERE qa_id = #{qaId}
+	</delete>
+
+</mapper>

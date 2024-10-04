@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aeye.aeaimb.mkpb.mapper.kg.KgMedicalExampleMapper">
+
+  <resultMap id="kgMedicalExampleMap" type="com.aeye.cdss.admin.api.entity.KgMedicalExample">
+        <id property="medicalId" column="medical_id"/>
+        <id property="userName" column="user_name"/>
+        <id property="idcard" column="idcard"/>
+        <id property="gender" column="gender"/>
+        <id property="phoneNo" column="phone_no"/>
+        <id property="birthDate" column="birth_date"/>
+        <id property="progressType" column="progress_type"/>
+        <id property="progressTitleName" column="progress_title_name"/>
+        <id property="progreeMessage" column="progree_message"/>
+        <id property="complaints" column="complaints"/>
+        <id property="presentMedicalHistory" column="present_medical_history"/>
+        <id property="otherHistory" column="other_history"/>
+        <id property="previousHistory" column="previous_history"/>
+        <id property="allergicHistory" column="allergic_history"/>
+        <id property="familyHistory" column="family_history"/>
+        <id property="individualHistory" column="individual_history"/>
+        <id property="marriageHistory" column="marriage_history"/>
+        <id property="temperature" column="temperature"/>
+        <id property="pulse" column="pulse"/>
+        <id property="breathe" column="breathe"/>
+        <id property="bloodPressureHigh" column="blood_pressure_high"/>
+        <id property="bloodPressureLow" column="blood_pressure_low"/>
+        <id property="bloodSugar" column="blood_sugar"/>
+        <id property="bodyWeight" column="body_weight"/>
+        <id property="bodyHeight" column="body_height"/>
+        <id property="physicalCheck" column="physical_check"/>
+        <id property="labExams" column="lab_exams"/>
+        <id property="treatmentPlan" column="treatment_plan"/>
+        <id property="age" column="age"/>
+        <id property="ageType" column="age_type"/>
+        <id property="createBy" column="create_by"/>
+        <id property="createTime" column="create_time"/>
+        <id property="updateBy" column="update_by"/>
+        <id property="updateTime" column="update_time"/>
+        <id property="delFlag" column="del_flag"/>
+  </resultMap>
+	<select id="getUniversalPaging" resultType="com.aeye.cdss.admin.api.dto.KgMedicalExampleDTO">
+		select kme.*, (select GROUP_CONCAT(kmd2.sick_name SEPARATOR ',')  from kg_medical_diagnosis kmd2 where kmd2.medical_id = kme.medical_id) as sick_name
+		from kg_medical_example kme left join kg_medical_diagnosis kmd on kmd.medical_id = kme.medical_id
+		WHERE 1=1 and del_flag = 0
+		  <if test="caseSampleVO.complaints != null">
+			  and complaints like concat('%',#{caseSampleVO.complaints},'%')
+		  </if>
+			<if test="caseSampleVO.sickName != null">
+				and  kmd.sick_name like  concat('%',#{caseSampleVO.sickName},'%')
+			</if>
+		GROUP BY kme.medical_id
+		order by update_time desc
+	</select>
+</mapper>

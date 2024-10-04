@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aeye.aeaimb.hugegraph.mapper.WmkgOperationDictMapper">
+
+    <resultMap type="com.aeye.aeaimb.hugegraph.mapper.entity.WmkgOperationDict" id="BaseOperationDictMap">
+        <result property="operationCode" column="operation_code" jdbcType="VARCHAR"/>
+        <result property="operationName" column="operation_name" jdbcType="VARCHAR"/>
+        <result property="normType" column="norm_type" jdbcType="VARCHAR"/>
+        <result property="categoryOne" column="category_one" jdbcType="VARCHAR"/>
+        <result property="categoryTwo" column="category_two" jdbcType="VARCHAR"/>
+        <result property="categoryThree" column="category_three" jdbcType="VARCHAR"/>
+        <result property="categoryFour" column="category_four" jdbcType="VARCHAR"/>
+        <result property="sort" column="sort" jdbcType="INTEGER"/>
+        <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+        <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="delFlag" column="del_flag" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+</mapper>
+

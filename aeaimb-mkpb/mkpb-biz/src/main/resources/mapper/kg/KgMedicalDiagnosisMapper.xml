@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aeye.aeaimb.mkpb.mapper.kg.KgMedicalDiagnosisMapper">
+
+  <resultMap id="kgMedicalDiagnosisMap" type="com.aeye.cdss.admin.api.entity.KgMedicalDiagnosis">
+        <id property="id" column="id"/>
+        <id property="medicalId" column="medical_id"/>
+        <id property="sickCode" column="sick_code"/>
+        <id property="sickName" column="sick_name"/>
+        <id property="sickIndex" column="sick_index"/>
+        <id property="diagnosisType" column="diagnosis_type"/>
+  </resultMap>
+</mapper>

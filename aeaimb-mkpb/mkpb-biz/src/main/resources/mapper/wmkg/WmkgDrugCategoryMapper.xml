@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aeye.aeaimb.mkpb.mapper.wmkg.WmkgDrugCategoryMapper">
+
+	<resultMap type="com.aeye.aeaimb.mkpb.entity.wmkg.WmkgDrugCategory" id="WmkgDrugCategoryMap">
+		<result property="cateCode" column="cate_code" jdbcType="VARCHAR"/>
+		<result property="cateName" column="cate_name" jdbcType="VARCHAR"/>
+		<result property="parentCode" column="parent_code" jdbcType="VARCHAR"/>
+		<result property="cateSort" column="cate_sort" jdbcType="INTEGER"/>
+	</resultMap>
+
+
+</mapper>
+

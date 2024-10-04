@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2020 cdss4cloud Authors. All Rights Reserved.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.aeye</groupId>
+    <artifactId>aeaimb</artifactId>
+    <name>${project.artifactId}</name>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <spring-boot.version>2.7.16</spring-boot.version>
+        <spring-cloud.version>2021.0.8</spring-cloud.version>
+        <spring-cloud-alibaba.version>2021.0.5.0</spring-cloud-alibaba.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <spring-boot-admin.version>2.7.10</spring-boot-admin.version>
+        <spring.authorization.version>0.4.3</spring.authorization.version>
+        <captcha.version>2.2.3</captcha.version>
+        <screw.version>0.0.1</screw.version>
+        <lombok.version>1.18.30</lombok.version>
+        <velocity.version>2.3</velocity.version>
+        <velocity.tool.version>3.1</velocity.tool.version>
+        <configuration.version>1.10</configuration.version>
+        <jasypt.version>3.0.5</jasypt.version>
+        <swagger.fox.version>3.0.0</swagger.fox.version>
+        <knife4j.ui.version>3.0.3</knife4j.ui.version>
+        <xxl-job.version>2.4.0</xxl-job.version>
+        <docker.plugin.version>0.32.0</docker.plugin.version>
+        <docker.host>tcp://192.168.16.132:2375</docker.host>
+        <docker.registry>192.168.16.148:10004</docker.registry>
+        <docker.namespace>cdss4cloud</docker.namespace>
+        <docker.username>admin</docker.username>
+        <docker.password>Zhy778899</docker.password>
+        <git.commit.plugin>4.9.9</git.commit.plugin>
+        <spring.checkstyle.plugin>0.0.39</spring.checkstyle.plugin>
+		<org.mapstruct.version>1.4.1.Final</org.mapstruct.version>
+		<smart-doc.version>2.7.7</smart-doc.version>
+		<smart-doc.plugin.version>2.7.7</smart-doc.plugin.version>
+    </properties>
+
+    <!-- 以下依赖 全局所有的模块都会引入  -->
+    <dependencies>
+        <!--配置文件处理器-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--配置文件加解密-->
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+            <version>${jasypt.version}</version>
+        </dependency>
+        <!--监控-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!--监控客户端-->
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>${spring-boot-admin.version}</version>
+        </dependency>
+        <!--Lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--测试依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>org.mapstruct</groupId>-->
+<!--			<artifactId>mapstruct-jdk8</artifactId>-->
+<!--			<version>${org.mapstruct.version}</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.mapstruct</groupId>-->
+<!--			<artifactId>mapstruct-processor</artifactId>-->
+<!--			<version>${org.mapstruct.version}</version>-->
+<!--		</dependency>-->
+    </dependencies>
+
+    <modules>
+		<module>aeaimb-bom</module>
+        <module>aeaimb-register</module>
+        <module>aeaimb-gateway</module>
+        <module>aeaimb-auth</module>
+		<module>aeaimb-kauth</module>
+        <module>aeaimb-upms</module>
+        <module>aeaimb-common</module>
+        <module>aeaimb-visual</module>
+		<module>aeaimb-cdss</module>
+		<module>aeaimb-kg</module>
+		<module>aeaimb-pre-consult</module>
+        <module>aeaimb-rmdt</module>
+		<module>aeaimb-higs</module>
+		<module>aeaimb-tcms</module>
+		<module>aeaimb-wmkg</module>
+        <module>aeaimb-share</module>
+		<module>aeaimb-mkpb</module>
+        <module>aeaimb-mreg</module>
+        <module>aeaimb-cpath</module>
+		<module>aeaimb-aggregate</module>
+    </modules>
+
+
+	<repositories>
+		<!-- 公司 Nexus -->
+		<repository>
+			<id>company nexus</id>
+			<name>Company nexus</name>
+			<url>http://192.168.10.241:8081/nexus/content/groups/public/</url>
+		</repository>
+		<!-- 阿里云 Nexus -->
+		<repository>
+			<id>aliyun nexus</id>
+			<name>aliyun nexus</name>
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+		</repository>
+		<!-- 华为云 -->
+		<repository>
+			<id>huaweicloud</id>
+			<name>mirror from maven huaweicloud</name>
+			<url>https://mirrors.huaweicloud.com/repository/maven/</url>
+		</repository>
+		<!-- 其他备用仓库 -->
+		<repository>
+			<id>my-alternate-repository</id>
+			<name>my-alternate-repository</name>
+			<url>http://myrepo.net/repo</url>
+		</repository>
+		<!-- 阿里云 -->
+		<repository>
+			<id>central</id>
+			<name>Nexus aliyun</name>
+			<url>https://maven.aliyun.com/repository/central</url>
+		</repository>
+		<!-- 腾讯云 -->
+		<repository>
+			<id>qcloud-central</id>
+			<name>qcloud mirror central</name>
+			<url>http://mirrors.cloud.tencent.com/nexus/repository/maven-public/</url>
+		</repository>
+		<!-- 阿里云 EDAS -->
+		<repository>
+			<id>edas-oss-central</id>
+			<name>taobao mirror central</name>
+			<url>http://edas-public.oss-cn-hangzhou.aliyuncs.com/repository</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<!-- 示例插件仓库配置 -->
+		<pluginRepository>
+			<id>company nexus</id>
+			<name>Company Plugin Repository</name>
+			<url>http://192.168.10.241:8081/nexus/content/groups/public/</url>
+		</pluginRepository>
+		<!-- 阿里云插件仓库配置 -->
+		<pluginRepository>
+			<id>aliyun nexus</id>
+			<name>Aliyun Plugin Repository</name>
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+		</pluginRepository>
+		<!-- ... -->
+	</pluginRepositories>
+
+    <dependencyManagement>
+        <dependencies>
+			<dependency>
+				<groupId>com.aeye</groupId>
+				<artifactId>upms-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.aeye</groupId>
+				<artifactId>pre-consult-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.aeye</groupId>
+				<artifactId>cdss-client-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.aeye</groupId>
+				<artifactId>aggregate-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.aeye</groupId>
+				<artifactId>cdss-core-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.aeye</groupId>
+				<artifactId>kg-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.aeye</groupId>
+				<artifactId>cdss-real-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.aeye</groupId>
+				<artifactId>share-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.aeye</groupId>
+				<artifactId>rmdt-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.aeye</groupId>
+				<artifactId>tcms-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.aeye</groupId>
+				<artifactId>wmkg-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.aeye</groupId>
+				<artifactId>mkpb-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.aeye</groupId>
+				<artifactId>mreg-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.aeye</groupId>
+				<artifactId>share-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.aeye</groupId>
+				<artifactId>cpath-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+            <!--cdss 公共版本定义-->
+            <dependency>
+                <groupId>com.aeye</groupId>
+                <artifactId>aeaimb-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- spring boot 依赖 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- spring cloud 依赖 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- spring cloud alibaba 依赖 -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <finalName>${project.name}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                    <configuration>
+                        <finalName>${project.build.finalName}</finalName>
+                        <layers>
+                            <enabled>true</enabled>
+                        </layers>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.1.2</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<goals>
+								<goal>jar-no-fork</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>com.github.shalousun</groupId>
+					<artifactId>smart-doc-maven-plugin</artifactId>
+					<version>${smart-doc.plugin.version}</version>
+					<configuration>
+						<configFile>${project.basedir}/src/main/resources/smart-doc.json</configFile>
+						<excludes>
+							<exclude>com.oracle:ojdbc6</exclude>
+							<exclude>com.microsoft.sqlserver:sqljdbc4</exclude>
+							<exclude>org.wltea.analyzer:IKAnalyzer</exclude>
+							<exclude>org.mybatis:mybatis</exclude>
+							<exclude>org.eclipse.jdt:core</exclude>
+							<exclude>org.eclipse.core:.*</exclude>
+							<exclude>de.codecentric:.*</exclude>
+							<exclude>org.springframework.cloud:.*</exclude>
+							<exclude>cn.hutool:.*</exclude>
+							<exclude>com.baomidou:.*</exclude>
+							<exclude>com.alibaba.nacos:.*</exclude>
+							<exclude>org.checkerframework:.*</exclude>
+							<exclude>org.apache.geronimo.specs:.*</exclude>
+							<exclude>io.agora:.*</exclude>
+							<exclude>com.xuxueli:.*</exclude>
+							<exclude>org.apache.activemq:.*</exclude>
+							<exclude>org.bytedeco:.*</exclude>
+							<exclude>org.redisson:.*</exclude>
+							<exclude>com.houkunlin:.*</exclude>
+							<exclude>com.alibaba:transmittable-thread-local</exclude>
+							<exclude>com.alicp.jetcache:*</exclude>
+							<exclude>com.esotericsoftware:*</exclude>
+							<exclude>redis.clients:*</exclude>
+							<exclude>org.lucee.oswego-concurrent:*</exclude>
+							<exclude>org.deeplearning4j:*</exclude>
+							<exclude>commons-net:*</exclude>
+							<exclude>org.nd4j:*</exclude>
+							<exclude>com.google.flatbuffers:*</exclude>
+							<exclude>cglib:cglib-nodep</exclude>
+							<exclude>org.easymock:*</exclude>
+							<exclude>com.huaban</exclude>
+						</excludes>
+
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>markdown</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+<!--                <plugin>-->
+<!--                    <groupId>io.fabric8</groupId>-->
+<!--                    <artifactId>docker-maven-plugin</artifactId>-->
+<!--                    <version>${docker.plugin.version}</version>-->
+<!--                    <configuration>-->
+<!--                        &lt;!&ndash; Docker Remote Api&ndash;&gt;-->
+<!--                        <dockerHost>${docker.host}</dockerHost>-->
+<!--                        &lt;!&ndash; Docker 镜像私服&ndash;&gt;-->
+<!--                        <registry>${docker.registry}</registry>-->
+<!--                        &lt;!&ndash; 认证信息&ndash;&gt;-->
+<!--                        <authConfig>-->
+<!--                            <push>-->
+<!--                                <username>${docker.username}</username>-->
+<!--                                <password>${docker.password}</password>-->
+<!--                            </push>-->
+<!--                        </authConfig>-->
+<!--                        <images>-->
+<!--                            <image>-->
+<!--                                &lt;!&ndash; 镜像名称： 172.17.0.111/library/cdss-gateway:2.6.3&ndash;&gt;-->
+<!--                                <name>${docker.registry}/${docker.namespace}/${project.name}:${project.version}</name>-->
+<!--                                <build>-->
+<!--                                    <dockerFile>${project.basedir}/Dockerfile</dockerFile>-->
+<!--                                </build>-->
+<!--                            </image>-->
+<!--                        </images>-->
+<!--                    </configuration>-->
+<!--					<executions>-->
+<!--						&lt;!&ndash; 执行mvn install时，执行 build、tag 操作&ndash;&gt;-->
+<!--						<execution>-->
+<!--							<id>build-image</id>-->
+<!--							<phase>install</phase>-->
+<!--							<goals>-->
+<!--								<goal>build</goal>-->
+<!--								<goal>push</goal>-->
+<!--							</goals>-->
+<!--						</execution>-->
+<!--					</executions>-->
+<!--                </plugin>-->
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <!--打包jar 与git commit 关联插件-->
+            <plugin>
+                <groupId>io.github.git-commit-id</groupId>
+                <artifactId>git-commit-id-maven-plugin</artifactId>
+                <version>${git.commit.plugin}</version>
+                <executions>
+                    <execution>
+                        <id>get-the-git-infos</id>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                        <phase>initialize</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <failOnNoGitDirectory>false</failOnNoGitDirectory>
+                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                    <!--因为项目定制了jackson的日期时间序列化/反序列化格式，因此这里要进行配置,不然通过management.info.git.mode=full进行完整git信息监控时会存在问题-->
+                    <dateFormat>yyyy-MM-dd HH:mm:ss</dateFormat>
+                    <includeOnlyProperties>
+                        <includeOnlyProperty>^git.build.(time|version)$</includeOnlyProperty>
+                        <includeOnlyProperty>^git.commit.(id|message|time).*$</includeOnlyProperty>
+                    </includeOnlyProperties>
+                </configuration>
+            </plugin>
+            <!--
+            	代码格式插件，默认使用spring 规则，可运行命令进行项目格式化：./mvnw spring-javaformat:apply 或 mvn spring-javaformat:apply，可在IDEA中安装插件以下插件进行自动格式化：
+            	https://repo1.maven.org/maven2/io/spring/javaformat/spring-javaformat-intellij-idea-plugin
+            -->
+            <plugin>
+                <groupId>io.spring.javaformat</groupId>
+                <artifactId>spring-javaformat-maven-plugin</artifactId>
+                <version>${spring.checkstyle.plugin}</version>
+            </plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+		<profile>
+			<id>ci</id>
+			<modules>
+				<module>aeaimb-upms</module>
+				<module>aeaimb-common</module>
+			</modules>
+		</profile>
+        <profile>
+            <id>chp_1</id>
+            <properties>
+                <!-- 环境标识，需要与配置文件的名称相对应 -->
+                <profiles.active>chp_1</profiles.active>
+                <nacos.username>nacos</nacos.username>
+                <nacos.password>nacos</nacos.password>
+            </properties>
+
+            <activation>
+                <!-- 默认环境 -->
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+
+	</profiles>
+</project>

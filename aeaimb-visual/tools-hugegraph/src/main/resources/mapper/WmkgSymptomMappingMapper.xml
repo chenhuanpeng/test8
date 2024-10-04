@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aeye.aeaimb.hugegraph.mapper.WmkgSymptomMappingMapper">
+
+	<resultMap type="com.aeye.aeaimb.hugegraph.mapper.entity.WmkgSymptomMapping" id="BaseSymptomMappingMap">
+		<result property="id" column="id" jdbcType="VARCHAR"/>
+		<result property="orgId" column="org_id" jdbcType="VARCHAR"/>
+		<result property="symptomCode" column="symptom_code" jdbcType="VARCHAR"/>
+		<result property="symptomName" column="symptom_name" jdbcType="VARCHAR"/>
+		<result property="orgSymptomCode" column="org_symptom_code" jdbcType="VARCHAR"/>
+		<result property="orgSymptomName" column="org_symptom_name" jdbcType="VARCHAR"/>
+		<result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+		<result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+		<result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+		<result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+	</resultMap>
+
+
+</mapper>
+

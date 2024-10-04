@@ -1,0 +1,6 @@
+com\aeye\aeaimb\common\swagger\config\OpenAPIDefinition.class
+com\aeye\aeaimb\common\swagger\support\SwaggerProperties.class
+com\aeye\aeaimb\common\swagger\config\OpenAPIDefinitionImportSelector.class
+com\aeye\aeaimb\common\swagger\annotation\EnableCdssDoc.class
+com\aeye\aeaimb\common\swagger\config\OpenAPIMetadataConfiguration.class
+META-INF\spring-configuration-metadata.json

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aeye.aeaimb.mkpb.mapper.wmkg.WmkgDiseaseDictMapper">
+
+	<resultMap type="com.aeye.aeaimb.mkpb.entity.wmkg.WmkgDiseaseDict" id="WmkgDiseaseDictMap">
+		<result property="id" column="id" jdbcType="VARCHAR"/>
+		<result property="diseaseCode" column="disease_code" jdbcType="VARCHAR"/>
+		<result property="diseaseName" column="disease_name" jdbcType="VARCHAR"/>
+		<result property="normType" column="norm_type" jdbcType="VARCHAR"/>
+		<result property="sort" column="sort" jdbcType="INTEGER"/>
+		<result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+		<result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+		<result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+		<result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+		<result property="delFlag" column="del_flag" jdbcType="VARCHAR"/>
+	</resultMap>
+
+	<select id="findBaseDiseaseDictPageList" resultType="com.aeye.aeaimb.mkpb.entity.wmkg.po.WmkgDiseaseDictPO">
+		select wdd.*, wmtc.cate_type, wmtc.cate_code, wmtc.cate_name
+		from wmkg_disease_dict wdd
+				 left join wmkg_disease_in_category wdic on wdd.disease_code = wdic.disease_code
+				 left join wmkg_medical_term_category wmtc on wdic.cate_code = wmtc.cate_code
+	</select>
+
+	<select id="getDiseaseDictList" resultType="com.aeye.aeaimb.mkpb.vo.cstn.CommonVO">
+		SELECT
+		t.disease_code as k,
+		t.disease_name as v
+		FROM
+		wmkg_disease_dict t
+		WHERE 1=1
+		<if test="keyword != null and keyword != ''">
+			and t.disease_name like CONCAT('%',#{keyword},'%')
+		</if>
+	</select>
+
+
+
+
+</mapper>
+

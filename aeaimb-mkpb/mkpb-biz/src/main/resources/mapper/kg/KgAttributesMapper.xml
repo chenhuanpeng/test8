@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aeye.aeaimb.mkpb.mapper.kg.KgAttributesMapper">
+
+  <resultMap id="kgAttributesMap" type="com.aeye.cdss.admin.api.entity.KgAttributes">
+        <id property="id" column="id"/>
+        <id property="type" column="type"/>
+        <id property="name" column="name"/>
+        <id property="displayName" column="display_name"/>
+        <id property="source" column="source"/>
+        <id property="value" column="value"/>
+        <id property="idx" column="idx"/>
+        <id property="kgId" column="kg_id"/>
+        <id property="showFlag" column="show_flag"/>
+        <id property="fieldCode" column="field_code"/>
+  </resultMap>
+</mapper>

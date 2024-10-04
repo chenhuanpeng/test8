@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aeye.aeaimb.mkpb.mapper.cstn.CstnConditionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.aeye.aeaimb.mkpb.entity.cstn.CstnCondition">
+        <id column="id" property="id" />
+        <result column="ref_id" property="refId" />
+        <result column="ref_type" property="refType" />
+        <result column="condition_name" property="conditionName" />
+        <result column="condition_type" property="conditionType" />
+        <result column="condition_sort" property="conditionSort" />
+        <result column="op" property="op" />
+        <result column="op_val" property="opVal" />
+        <result column="op_unit" property="opUnit" />
+		<result column="meta_id" property="metaId" />
+		<result column="meta_code" property="metaCode" />
+
+    </resultMap>
+
+	<delete id="deleteConditionByRefIdAndRefType" parameterType="map">
+		DELETE FROM cstn_condition
+		WHERE 1=1
+		<if test="refId != null and refId != ''">
+			and ref_id = #{refId}
+		</if>
+		<if test="refType != null and refType != ''">
+			AND ref_type = #{refType}
+		</if>
+
+	</delete>
+
+	<select id="getConditionList" resultType="com.aeye.aeaimb.mkpb.vo.cstn.ConditionVO">
+		SELECT
+		t.meta_id as condition_type,
+		t.condition_name as condition_type_name,
+		t.op as op,
+		t.op_unit as unit,
+		t.op_val as target_value
+		FROM
+		cstn_condition t
+		WHERE 1=1
+		<if test="refId != null and refId != ''">
+			and t.ref_id = #{refId}
+		</if>
+		<if test="refType != null and refType != ''">
+			and t.ref_type = #{refType}
+		</if>
+		<if test="condiType != null and condiType != ''">
+			and t.condition_type = #{condiType}
+		</if>
+
+	</select>
+
+</mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aeye.aeaimb.mkpb.mapper.cstn.CstnPathDeptMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.aeye.aeaimb.mkpb.entity.cstn.CstnPathDept">
+        <id column="id" property="id" />
+        <result column="path_id" property="pathId" />
+        <result column="dept_code" property="deptCode" />
+		<result column="dept_name" property="deptName" />
+    </resultMap>
+
+
+	<delete id="deleteCstnPathDeptList" parameterType="java.lang.String">
+		DELETE FROM cstn_path_dept
+		WHERE path_id = #{pathId}
+	</delete>
+
+	<select id="getCstnPathDeptList" resultType="com.aeye.aeaimb.mkpb.entity.cstn.CstnPathDept">
+		SELECT
+		t.*
+		FROM
+		cstn_path_dept t
+		WHERE 1=1
+		<if test="pathId != null and pathId != ''">
+			and t.path_id = #{pathId}
+		</if>
+	</select>
+
+</mapper>

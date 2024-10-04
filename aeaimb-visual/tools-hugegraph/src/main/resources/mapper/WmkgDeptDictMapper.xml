@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aeye.aeaimb.hugegraph.mapper.WmkgDeptDictMapper">
+
+	<resultMap type="com.aeye.aeaimb.hugegraph.mapper.entity.WmkgDeptDict" id="BaseDeptDictMap">
+		<result property="deptCode" column="dept_code" jdbcType="VARCHAR"/>
+		<result property="deptName" column="dept_name" jdbcType="VARCHAR"/>
+		<result property="parentCode" column="parent_code" jdbcType="VARCHAR"/>
+		<result property="sort" column="sort" jdbcType="INTEGER"/>
+	</resultMap>
+
+
+</mapper>
+
