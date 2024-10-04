@@ -105,6 +105,7 @@ public class SsoFilter implements Filter {
 	@Override
 	public void destroy() {
 
+		//filter 测试
 		log.info("销毁");
 		// 销毁代码
 	}
