@@ -109,26 +109,12 @@
     </dependencies>
 
     <modules>
-		<module>aeaimb-bom</module>
         <module>aeaimb-register</module>
         <module>aeaimb-gateway</module>
-        <module>aeaimb-auth</module>
 		<module>aeaimb-kauth</module>
-        <module>aeaimb-upms</module>
         <module>aeaimb-common</module>
         <module>aeaimb-visual</module>
-		<module>aeaimb-cdss</module>
-		<module>aeaimb-kg</module>
-		<module>aeaimb-pre-consult</module>
-        <module>aeaimb-rmdt</module>
-		<module>aeaimb-higs</module>
-		<module>aeaimb-tcms</module>
-		<module>aeaimb-wmkg</module>
-        <module>aeaimb-share</module>
 		<module>aeaimb-mkpb</module>
-        <module>aeaimb-mreg</module>
-        <module>aeaimb-cpath</module>
-		<module>aeaimb-aggregate</module>
     </modules>
 
 
@@ -472,10 +458,6 @@
                 <version>${spring.checkstyle.plugin}</version>
             </plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-			</plugin>
         </plugins>
     </build>
 
@@ -483,7 +465,6 @@
 		<profile>
 			<id>ci</id>
 			<modules>
-				<module>aeaimb-upms</module>
 				<module>aeaimb-common</module>
 			</modules>
 		</profile>

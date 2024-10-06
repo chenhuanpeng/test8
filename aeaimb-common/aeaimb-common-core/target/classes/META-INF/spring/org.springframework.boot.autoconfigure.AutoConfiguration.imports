@@ -1,6 +1,0 @@
-com.aeye.aeaimb.common.core.config.TaskExecutorConfiguration
-com.aeye.aeaimb.common.core.config.JacksonConfiguration
-com.aeye.aeaimb.common.core.config.RedisTemplateConfiguration
-com.aeye.aeaimb.common.core.config.RestTemplateConfiguration
-com.aeye.aeaimb.common.core.util.SpringContextHolder
-com.aeye.aeaimb.common.core.config.WebMvcConfiguration
